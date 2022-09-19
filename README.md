@@ -1,1 +1,1 @@
-# web-dev-javascript
+# web-development
