@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <title>js-date-prototype-string</title>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        <style type="text/css">
+            div#outer {
+                width: 100%;
+            }
+
+            div#inner {
+                width: 85%;
+                margin: 32px auto 0 auto;
+                text-align: center;
+            }
+
+            span {
+                font-size: 16pt;
+                margin-bottom: 16px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="outer">
+            <div id="inner">
+                <div id="text-of-date-01"></div>
+                <div id="text-of-date-02"></div>
+                <div id="text-of-date-03"></div>
+            </div>
+        </div>
+
+        <script>
+            /*
+                JavaScript example of Date prototyping:
+                Output as [monthAbbr]. [day], [year] format.
+            */
+            Date.prototype.toPrototypeDateString = function() {
+                return (
+                    'Jan.|Feb.|Mar.|Apr.|May|Jun.|Jul.|Aug.|Sep.|Oct.|Nov.|Dec.'.split('|')[this.getMonth()] + ' ' +
+                    this.getDate().toString() + ', ' +
+                    this.getFullYear().toString()
+                );
+            };
+
+            // DOM element(s)
+            var span01 = document.getElementById("text-of-date-01");
+            var span02 = document.getElementById("text-of-date-02");
+            var span03 = document.getElementById("text-of-date-03");
+
+            //  Jan. 1, 2024
+            txt = document.createTextNode((new Date()).toPrototypeDateString());
+            span01.innerText = txt.textContent;
+
+            //  Feb, 1, 2024
+            txt = document.createTextNode((new Date(2024, 1)).toPrototypeDateString());
+            span02.innerText = txt.textContent;
+
+            //  Mar. 15, 2024
+            txt = document.createTextNode((new Date(2024, 2, 15)).toPrototypeDateString());
+            span03.innerText = txt.textContent;
+        </script>
+
+    </body>
+</html>
