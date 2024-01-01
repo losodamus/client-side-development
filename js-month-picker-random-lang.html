@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <title>js-month-picker-random-lang</title>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        <style type="text/css">
+            div#outer {
+                width: 100%;
+            }
+
+            div#inner {
+                width: 85%;
+                margin: 32px auto 0 auto;
+                text-align: center;
+            }
+
+            select#ddlOfMonths {
+                font-size: 16pt;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="outer">
+            <div id="inner">
+                <select id="ddlOfMonths">
+                    <option>choose month</option>
+                </select>
+
+            </div>
+        </div>
+
+        <script>
+            var m = [
+                // [ English Abbr, English Full, Itlaian, Spanish, French ]
+                ['Jan', 'January', 'Gennaio', 'enero', 'janvier'],
+                ['Feb', 'February', 'Febbraio', 'febrero', 'février'],
+                ['Mar', 'March', 'Marzo', 'marzo', 'mars'],
+                ['Apr', 'April', 'Aprile', 'abril', 'avril'],
+                ['May', 'May', 'Maggio', 'mayo', 'mai'],
+                ['Jun', 'June', 'Giugno', 'junio', 'juin'],
+                ['Jul', 'July', 'Luglio', 'julio', 'juillet'],
+                ['Aug', 'August', 'Agosto', 'agosto', 'aout'],
+                ['Sep', 'September', 'Settembre', 'septiembre', 'septembre'],
+                ['Oct', 'October', 'Ottobre', 'octubre', 'octobre'],
+                ['Nov', 'November', 'Novembre', 'noviembre', 'novembre'],
+                ['Dec', 'December', 'Dicembre', 'diciembre', 'décembre']
+            ];
+
+            var ddl = document.getElementById("ddlOfMonths");
+            for(var i = 0; i < m.length; i++) {
+
+                var opt = document.createElement("option");
+                opt.text = m[i][Math.floor(Math.random() * m[i].length)];
+                ddl.add(opt);
+            }
+        </script>
+
+    </body>
+</html>
