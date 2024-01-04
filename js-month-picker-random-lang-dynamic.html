@@ -15,45 +15,52 @@
                 text-align: center;
             }
 
+            div#descOfSelect {
+                font-size: 16pt;
+                font-weight: bold;
+            }
+
             select#ddlOfMonths {
                 font-size: 16pt;
             }
         </style>
 
         <script type="text/javascript">
+            var __listOfMonths = [ 
+                // [ English Abbr, English Full, Itlaian, Spanish, French ]
+                ['Jan', 'January', 'Gennaio', 'enero', 'janvier'],
+                ['Feb', 'February', 'Febbraio', 'febrero', 'février'],
+                ['Mar', 'March', 'Marzo', 'marzo', 'mars'],
+                ['Apr', 'April', 'Aprile', 'abril', 'avril'],
+                ['May', 'May', 'Maggio', 'mayo', 'mai'],
+                ['Jun', 'June', 'Giugno', 'junio', 'juin'],
+                ['Jul', 'July', 'Luglio', 'julio', 'juillet'],
+                ['Aug', 'August', 'Agosto', 'agosto', 'aout'],
+                ['Sep', 'September', 'Settembre', 'septiembre', 'septembre'],
+                ['Oct', 'October', 'Ottobre', 'octubre', 'octobre'],
+                ['Nov', 'November', 'Novembre', 'noviembre', 'novembre'],
+                ['Dec', 'December', 'Dicembre', 'diciembre', 'décembre']
+            ];
+
+            // Dynamically update select opt(s)
             function populateMonthPicker() {
+
+                //  Return select element
                 var ddl = document.getElementById("ddlOfMonths");
 
-                //  Append choices | defaults
+                //  Append default option(s)
                 if(ddl.options.length === 1) {
-                    for(var k = 1; k <= 12; k++) {
-
+                    for(var k = 0; k < __listOfMonths.length; k++) {
                         var opt = document.createElement("option");
-                        opt.text = ("Placeholder #" + k);
+                        opt.text = (__listOfMonths[k][0]);
                         ddl.add(opt);
                     }
                 }
 
-                //  Update choices | nothing selected
-                if(ddl.options.selectedIndex === 0) {
-                    var m = [ // [ English Abbr, English Full, Itlaian, Spanish, French ]
-                        ['Jan', 'January', 'Gennaio', 'enero', 'janvier'],
-                        ['Feb', 'February', 'Febbraio', 'febrero', 'février'],
-                        ['Mar', 'March', 'Marzo', 'marzo', 'mars'],
-                        ['Apr', 'April', 'Aprile', 'abril', 'avril'],
-                        ['May', 'May', 'Maggio', 'mayo', 'mai'],
-                        ['Jun', 'June', 'Giugno', 'junio', 'juin'],
-                        ['Jul', 'July', 'Luglio', 'julio', 'juillet'],
-                        ['Aug', 'August', 'Agosto', 'agosto', 'aout'],
-                        ['Sep', 'September', 'Settembre', 'septiembre', 'septembre'],
-                        ['Oct', 'October', 'Ottobre', 'octubre', 'octobre'],
-                        ['Nov', 'November', 'Novembre', 'noviembre', 'novembre'],
-                        ['Dec', 'December', 'Dicembre', 'diciembre', 'décembre']
-                    ];
-
-                    for(var i = 0; i < m.length; i++) {
-                        ddl.options[i + 1].innerHTML  = m[i][Math.floor(Math.random() * m[i].length)];
-                    }
+                //  Update select option(s)
+                for(var i = 0; i < __listOfMonths.length; i++) {
+                    var t = __listOfMonths[i][Math.floor(Math.random() * __listOfMonths[i].length)];
+                    ddl.options[i + 1].innerHTML = t.toString();
                 }
             }
         </script>
@@ -61,6 +68,9 @@
     <body>
         <div id="outer">
             <div id="inner">
+                <div id="descOfSelect">
+                    Randomized languages on select mouse over.
+                </div>
                 <select id="ddlOfMonths" onmouseover="populateMonthPicker()">
                     <option>choose month</option>
                 </select>
