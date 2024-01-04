@@ -3,6 +3,7 @@
     <head>
         <title>js-month-picker-random-lang</title>
         <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
         <style type="text/css">
             div#outer {
                 width: 100%;
@@ -14,6 +15,11 @@
                 text-align: center;
             }
 
+            div#descOfSelect {
+                font-size: 16pt;
+                font-weight: bold;
+            }
+
             select#ddlOfMonths {
                 font-size: 16pt;
             }
@@ -23,14 +29,16 @@
 
         <div id="outer">
             <div id="inner">
+                <div id="descOfSelect">
+                    Randomized languages on page load.
+                </div>
                 <select id="ddlOfMonths">
                     <option>choose month</option>
                 </select>
-
             </div>
         </div>
 
-        <script>
+        <script type="text/javascript">
             var m = [
                 // [ English Abbr, English Full, Itlaian, Spanish, French ]
                 ['Jan', 'January', 'Gennaio', 'enero', 'janvier'],
@@ -47,9 +55,11 @@
                 ['Dec', 'December', 'Dicembre', 'diciembre', 'décembre']
             ];
 
+            //  Return select element
             var ddl = document.getElementById("ddlOfMonths");
             for(var i = 0; i < m.length; i++) {
 
+                //  Create select option
                 var opt = document.createElement("option");
                 opt.text = m[i][Math.floor(Math.random() * m[i].length)];
                 ddl.add(opt);
