@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <title>js-remove-non-numbers</title>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+        <style type="text/css">
+            div#outer {
+                width: 100%;
+            }
+
+            div#inner {
+                width: 85%;
+                margin: 32px auto 0 auto;
+                text-align: center;
+            }
+
+            div#divDescription {
+                font-size: 16pt;
+                font-weight: bold;
+                margin-bottom: 16px;
+            }
+
+            div#divInput, div#divResult {
+                font-size: 12pt;
+                margin-bottom: 16px;
+            }
+        </style>
+
+        <script type="text/javascript">
+
+            function removeNonNumbers() {
+                var ni = document.getElementById("numInput").value;
+                var nr = document.getElementById("numResult");
+
+                var a = ni.split('');
+                var n = '1234567890';
+
+                for(var i = 0; i < a.length; i++) {
+                    if(n.indexOf(a[i]) === -1) {
+                        ni = ni.replace(a[i], '');
+                    }
+                }
+                nr.innerHTML = ni;
+            }
+
+        </script>
+
+    </head>
+    <body>
+
+        <div id="outer">
+            <div id="inner">
+                <div id="divDescription">
+                    Remove non-numerical values:
+                </div>
+                <div id="divInput">
+                    Original:&nbsp;
+                    <input id="numInput" type="text" value="!ab1cd2ef3gh4ij5kl6mn7op8qr9st0uv-wx_yz." />
+                </div>
+                <div id="divResult">
+                    Cleaned:&nbsp;
+                    <span id="numResult">-----</span>
+                </div>
+                <button onclick='removeNonNumbers()'>Clean</button>
+            </div>
+        </div>
+
+    </body>
+</html>
