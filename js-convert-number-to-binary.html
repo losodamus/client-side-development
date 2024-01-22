@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <title>js-convert-number-to-binary</title>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+        <style type="text/css">
+            div#outer {
+                width: 100%;
+            }
+
+            div#inner {
+                width: 85%;
+                margin: 32px auto 0 auto;
+                text-align: center;
+            }
+
+            div#divDescription {
+                font-size: 16pt;
+                font-weight: bold;
+                margin-bottom: 16px;
+            }
+
+            div#divInput, div#divResult {
+                font-size: 12pt;
+                margin-bottom: 16px;
+            }
+
+            #spanResult {
+                font-weight: bold;
+            }
+        </style>
+
+        <script type="text/javascript">
+
+            function returnBinaryOf() {
+                var numString = document.getElementById("numInput").value;
+                var numValue = parseInt(numString.toString());
+
+                var binarySeq = getBinarySequence(numValue);
+                document.getElementById("spanResult").innerHTML = binarySeq;
+            }
+
+            function getBinarySequence(thisValue) {
+                if (thisValue === 0) {
+                    return 0;
+                }
+
+                //  Variable(s)
+                var numberValue = thisValue,
+                    binaryResult = '',
+                    indexOfPower = 0;
+
+                //  Calculate minimum power of 2  
+                //  value greater than parameter.
+                while(numberValue >= Math.pow(2, indexOfPower)) {
+                    indexOfPower += 1;
+                }
+
+                //  Calculate binary string of 
+                //  parameter value.
+                for(var x = indexOfPower - 1; x >= 0; x--) {
+                    if((numberValue - Math.pow(2, x)) >= 0) {
+                        numberValue -= Math.pow(2, x);
+                        binaryResult += ('1');
+                    }
+                    else {
+                        binaryResult += ('0');
+                    }
+                }
+                return binaryResult;
+            }
+
+        </script>
+
+    </head>
+    <body>
+
+        <div id="outer">
+            <div id="inner">
+                <div id="divDescription">
+                    Enter a number to convert into binary:
+                </div>
+                <div id="divInput">
+                    <input id="numInput" type="number" min="0" value="2024" />
+                </div>
+                <div id="divResult">
+                    <span id="spanResult">-----</span>
+                </div>
+                <button onclick='returnBinaryOf()'>Convert</button>
+            </div>
+        </div>
+
+    </body>
+</html>
