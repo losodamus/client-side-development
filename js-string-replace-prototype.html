@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <title>js-string-replace-prototype</title>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        <style type="text/css">
+            div#outer {
+                width: 100%;
+            }
+
+            div#inner {
+                width: 85%;
+                margin: 32px auto 0 auto;
+                text-align: center;
+            }
+
+            div#inner div {
+                font-size: 16pt;
+                margin: 4px 0 16px 0;
+            }
+
+            div#text-old {
+                background-color: rgb(255, 255, 80);
+            }
+
+            div#text-new {
+                background-color: #44fc44;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="outer">
+            <div id="inner">
+                <div id="text-desc"><b>Ex:</b> Replace 'o' with '---' | String.prototype.</div>
+                <div id="text-old">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id erat tristique, lacinia augue ac, suscipit lectus. Mauris vel purus non tortor volutpat rhoncus eget at augue. Pellentesque eget placerat nisi, sit amet blandit eros. In dignissim arcu neque, at eleifend diam rutrum ut. Ut sed augue a urna suscipit volutpat vitae ut risus. Proin quis mollis mauris, eget venenatis ante. Etiam vestibulum vehicula orci a suscipit. Phasellus rutrum tincidunt diam. Suspendisse laoreet eros a velit semper congue varius ac sem. Fusce nec nibh aliquam, venenatis odio ut, tristique mi. Mauris non sapien venenatis, tempus libero sed, fringilla dolor.</div>
+                <div id="text-new"></div>
+            </div>
+        </div>
+
+        <script>
+            /*
+                JavaScript example of String prototyping:
+                Replace all occurrences of a string using split() and join().
+            */
+            String.prototype.replaceThisWithThat = function(thisText, thatText) {
+                return (
+                    this.toString().split(thisText).join(thatText)
+                );
+            };
+
+            // DOM element(s)
+            var textOld = document.getElementById("text-old");
+            var textNew = document.getElementById("text-new");
+            textNode = document.createTextNode(textOld.innerText.toString().replaceThisWithThat('o', '---'));
+            textNew.innerText = textNode.textContent;
+        </script>
+
+    </body>
+</html>
