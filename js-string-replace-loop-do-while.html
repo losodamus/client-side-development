@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
     <head>
-        <title>js-string-replace-loop-while</title>
+        <title>js-string-replace-loop-do-while</title>
         <meta content="text/html; charset=utf-8" http-equiv="content-type">
         <style type="text/css">
             div#outer {
@@ -32,7 +32,7 @@
 
         <div id="outer">
             <div id="inner">
-                <div id="text-desc"><b>Ex:</b> Replace 'o' with '---' | while loop.</div>
+                <div id="text-desc"><b>Ex:</b> Replace 'o' with '---' | do while loop.</div>
                 <div id="text-old">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id erat tristique, lacinia augue ac, suscipit lectus. Mauris vel purus non tortor volutpat rhoncus eget at augue. Pellentesque eget placerat nisi, sit amet blandit eros. In dignissim arcu neque, at eleifend diam rutrum ut. Ut sed augue a urna suscipit volutpat vitae ut risus. Proin quis mollis mauris, eget venenatis ante. Etiam vestibulum vehicula orci a suscipit. Phasellus rutrum tincidunt diam. Suspendisse laoreet eros a velit semper congue varius ac sem. Fusce nec nibh aliquam, venenatis odio ut, tristique mi. Mauris non sapien venenatis, tempus libero sed, fringilla dolor.</div>
                 <div id="text-new"></div>
             </div>
@@ -41,13 +41,14 @@
         <script>
             /*
                 JavaScript example of String prototyping:
-                Replace all occurrences of a string using a while loop.
+                Replace all occurrences of a string using a do-while loop.
             */
             function replaceThisWithThat(originalText, thisText, thatText) {
                 var t = originalText.toString();
-                while (t.indexOf(thisText) !== -1) {
+                do {
                     t = t.replace(thisText, thatText);
                 }
+                while (t.indexOf(thisText) !== -1);
                 return t;
             }
 
